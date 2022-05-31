@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.usuario.service.entidades.Usuario;
+import com.usuario.service.modelos.Carro;
+import com.usuario.service.modelos.Moto;
 import com.usuario.service.servicio.UsuarioService;
 
 @RestController
@@ -50,4 +52,27 @@ public class UsuarioController {
 		return ResponseEntity.ok(nuevoUsuario);
 	}
 	
+	@GetMapping(path ="/carro/{usuarioId}")
+	public ResponseEntity<List<Carro>> getCarros(
+			@PathVariable(value ="usuarioId") int usuarioId){
+		Usuario usuario = usuarioService.getUSuarioById(usuarioId);
+		
+		if(usuario ==  null) {
+			return ResponseEntity.notFound().build();
+		}
+		List<Carro> carros = usuarioService.getCarros(usuarioId);
+		return ResponseEntity.ok(carros);
+	}	
+	
+	@GetMapping(path ="/moto/{usuarioId}")
+	public ResponseEntity<List<Moto>> getMotos(
+			@PathVariable(value ="usuarioId") int usuarioId){
+		Usuario usuario = usuarioService.getUSuarioById(usuarioId);
+		
+		if(usuario ==  null) {
+			return ResponseEntity.notFound().build();
+		}
+		List<Moto> motos = usuarioService.getMotos(usuarioId);
+		return ResponseEntity.ok(motos);
+	}
 }
