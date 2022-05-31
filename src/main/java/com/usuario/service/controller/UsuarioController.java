@@ -52,7 +52,7 @@ public class UsuarioController {
 		return ResponseEntity.ok(nuevoUsuario);
 	}
 	
-	@GetMapping(path ="/carro/{usuarioId}")
+	@GetMapping(path ="/carros/{usuarioId}")
 	public ResponseEntity<List<Carro>> getCarros(
 			@PathVariable(value ="usuarioId") int usuarioId){
 		Usuario usuario = usuarioService.getUSuarioById(usuarioId);
@@ -64,7 +64,7 @@ public class UsuarioController {
 		return ResponseEntity.ok(carros);
 	}	
 	
-	@GetMapping(path ="/moto/{usuarioId}")
+	@GetMapping(path ="/motos/{usuarioId}")
 	public ResponseEntity<List<Moto>> getMotos(
 			@PathVariable(value ="usuarioId") int usuarioId){
 		Usuario usuario = usuarioService.getUSuarioById(usuarioId);
